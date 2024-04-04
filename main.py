@@ -32,7 +32,7 @@ resnet = models.resnet50(pretrained=True)
 
 # Freeze all layers except the final fully connected layer
 for param in resnet.parameters():
-    param.requires_grad = False
+    param.requires_grad = True
 
 # Modify the last fully connected layer to match FashionMNIST (10 classes)
 num_ftrs = resnet.fc.in_features
