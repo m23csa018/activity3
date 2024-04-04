@@ -28,7 +28,7 @@ train_loader = DataLoader(subset_train, batch_size=200, shuffle=True,pin_memory=
 test_loader = DataLoader(subset_test, batch_size=200, shuffle=False,pin_memory=True)
 
 # Load pre-trained ResNet101 model
-resnet = models.resnet101(pretrained=False)
+resnet = models.resnet101(pretrained=True)
 
 # Freeze all layers except the final fully connected layer
 for param in resnet.parameters():
@@ -41,8 +41,8 @@ resnet.fc = nn.Linear(num_ftrs, 10)  # 10 classes in FashionMNIST
 # Define optimizers
 optimizers = {
     'Adam': optim.Adam(resnet.parameters(), lr=0.001),
-    'Adagrad': optim.Adagrad(resnet.parameters(), lr=0.006),
-    'RMSprop': optim.RMSprop(resnet.parameters(), lr=0.006)
+    'Adagrad': optim.Adagrad(resnet.parameters(), lr=0.001),
+    'RMSprop': optim.RMSprop(resnet.parameters(), lr=0.001)
 }
 
 # Define loss function
