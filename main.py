@@ -28,7 +28,7 @@ train_loader = DataLoader(subset_train, batch_size=200, shuffle=True,pin_memory=
 test_loader = DataLoader(subset_test, batch_size=200, shuffle=False,pin_memory=True)
 
 # Load pre-trained ResNet101 model
-resnet = models.resnet50(pretrained=True)
+resnet = models.resnet101(pretrained=True)
 
 # Freeze all layers except the final fully connected layer
 for param in resnet.parameters():
